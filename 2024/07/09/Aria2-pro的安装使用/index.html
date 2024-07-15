@@ -1,0 +1,222 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Aria2-pro的安装使用 | 最佳损友のHexo</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/pwa/favicon.ico"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=1.12.3"><!-- inject head--><link rel="canonical" href="https://zuijiasy.github.io/2024/07/09/Aria2-pro%E7%9A%84%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/"><link rel="stylesheet" href="https://cdn2.codesign.qq.com/icons/7pOrz0WXB5ZWJPX/latest/iconfont.css"><!-- aplayer--><!-- swiper--><!-- fancybox ui--><!-- katex--><!-- Open Graph--><meta name="description" content="（未写完）如果仅仅只想知道如何安装，请看安装步骤 Aria2简介Aria2 是一个轻量级的多协议和多源命令行下载工具，它支持HTTP&amp;#x2F;HTTPS、FTP、SFTP、BitTorrent、磁力链、百度网盘等多种下载方式。Aria2 的设计目标是提供快速的下载速度和高效的资源利用。以下是一些关"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="最佳损友のHexo"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/pwa/favicon.ico"><link rel="apple-touch-icon" href="/img/pwa/favicon.ico" sizes="180x180"><script>console.log(' %c Solitude %c ' + '1.12.3' + ' %c https://github.com/everfu/hexo-theme-solitude',
+    'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
+    'background:#ff9a9a ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
+    'background:unset ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff')
+</script><script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+    
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+    
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+    
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+    
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+        
+                if (name && keyObj[name]) return
+        
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+        }
+    })()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: undefined,
+    runtime: '2024-07-08 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.avif'
+    },
+    copyright: {"limit":50,"author":"作者: 最佳损友","link":"链接: ","source":"来源: 最佳损友のHexo","info":"著作权归作者所有。 商业转载请联系作者获得授权，非商业转载请注明出处。"},
+    highlight: {"limit":200,"expand":true,"copy":true,"syntax":"highlight.js"},
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"day":" 天","f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可"},
+    aside: {
+        sayhello: {
+            morning: '一日之计在于晨',
+            noon: '吃饱了才有力气干活',
+            afternoon: '集中精力，攻克难关',
+            night: '不要太劳累了，早睡更健康',
+            goodnight: '睡个好觉，保证精力充沛',
+        },
+        sayhello2: [],
+        sayhello3: {
+            prefix: '好久不见，',
+            back: '欢迎再次回来，',
+        },
+    },
+    covercolor: {
+        enable: false
+    },
+    comment: false,
+    lightbox: 'null',
+    post_ai: false,
+    right_menu: false,
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: false,
+    ai_text: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body id="body"><!-- universe--><canvas id="universe"></canvas><!-- loading--><!-- console--><div id="console"><div class="close-btn" onclick="sco.hideConsole()"><i class="solitude st-close-fill"></i></div><div class="button-group"><div class="console-btn-item"><span class="darkmode_switchbutton" onclick="sco.switchDarkMode()" title="昼夜切换"><i class="solitude st-moon-clear-fill"></i></span></div><div class="console-btn-item" id="consoleHideAside"><span class="asideSwitch" onclick="sco.switchHideAside()" title="边栏显示控制"><i class="solitude st-side-bar-fill"></i></span></div></div><div class="console-mask" onclick="sco.hideConsole()"></div></div><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude st-moon-clear-fill"></i><span>显示模式</span></span></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"></div></div></div></div><!-- keyboard--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><a id="site-name" href="/" title="返回博客主页"><span class="title">Solitude</span></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">Aria2-pro的安装使用</a></div></div><div id="menus"></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude st-arrow-up-line"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude st-menu-line"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="/img/default.avif" alt="Aria2-pro的安装使用"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><div class="tag_share"><div class="post-meta__tag-list"></div></div></div></div><h1 class="post-title">Aria2-pro的安装使用</h1><div id="post-meta"><div class="meta-secondline"></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="（未写完）"><a href="#（未写完）" class="headerlink" title="（未写完）"></a>（未写完）</h1><p>如果仅仅只想知道如何安装，请看安装步骤</p>
+<h1 id="Aria2简介"><a href="#Aria2简介" class="headerlink" title="Aria2简介"></a>Aria2简介</h1><p>Aria2 是一个轻量级的多协议和多源命令行下载工具，它支持HTTP&#x2F;HTTPS、FTP、SFTP、BitTorrent、磁力链、百度网盘等多种下载方式。Aria2 的设计目标是提供快速的下载速度和高效的资源利用。以下是一些关于 Aria2 的主要特点：</p>
+<ol>
+<li>多协议支持：Aria2 支持多种下载协议，可以同时从多个来源下载文件，提高了下载速度和可靠性。</li>
+<li>多源下载：Aria2 可以从多个服务器同时下载文件的不同部分，这样可以显著提高下载速度。</li>
+<li>断点续传：Aria2 支持断点续传功能，即使下载过程中断，也可以从中断的地方继续下载，而不需要重新开始。</li>
+<li>RPC 接口：Aria2 提供了 JSON-RPC 和 XML-RPC 接口，可以通过编程方式控制下载任务。</li>
+<li>Web UI：Aria2 可以通过 Web 界面进行操作，方便用户图形化管理下载任务。</li>
+<li>命令行界面：Aria2 提供了命令行界面，适合高级用户和脚本自动化。</li>
+<li>轻量级：Aria2 的资源占用相对较低，适合在各种系统上运行。</li>
+<li>自定义配置：用户可以根据自己的需要对 Aria2 进行配置，包括下载速度限制、文件分块大小等。</li>
+<li>跨平台：Aria2 可以在多种操作系统上运行，包括 Windows、macOS、Linux 等。</li>
+<li>开源：Aria2 是一个开源项目，可以在 GitHub 上找到其源代码和文档。<br>Aria2 适合需要高速下载和自动化下载任务的场景，例如批量下载文件、下载大文件或者需要从多个源同时下载文件的情况。由于其强大的功能和灵活性，Aria2 在开发者和技术爱好者中非常受欢迎。<br>仅从下载能力看，和迅雷相比，Aria2在下载热门资源方面完全不输迅雷，并且某些资源也不会有屏蔽的情况出现，但是一些冷门的资源的确比不过迅雷会员，请大家做好取舍。</li>
+</ol>
+<h1 id="Aria2操作界面"><a href="#Aria2操作界面" class="headerlink" title="Aria2操作界面"></a>Aria2操作界面</h1><p>以下是我安装好以后的下载界面，由于自己没有装Aria2NG，采用的是浏览器的插件，后续会教大家如何安装<br><img src="%E6%8F%92%E4%BB%B6%E7%95%8C%E9%9D%A2.jpg" alt="插件界面"></p>
+<h1 id="Aria2安装步骤"><a href="#Aria2安装步骤" class="headerlink" title="Aria2安装步骤"></a>Aria2安装步骤</h1><p>这里使用的是<a target="_blank" rel="noopener" href="https://p3terx.com/">p3terx</a>大佬提供的Aria2</p>
+<h2 id="1-安装docker"><a href="#1-安装docker" class="headerlink" title="1. 安装docker"></a>1. 安装docker</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install curl</span><br><span class="line">curl -fsSL https://test.docker.com -o test-docker.sh</span><br><span class="line">sudo sh test-docker.sh //sudo命令视情添加</span><br></pre></td></tr></table></figure>
+<h2 id="2-安装Aria2-pro"><a href="#2-安装Aria2-pro" class="headerlink" title="2. 安装Aria2-pro"></a>2. 安装Aria2-pro</h2><h3 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h3><p>GitHub: <a target="_blank" rel="noopener" href="https://github.com/P3TERX/docker-aria2-pro">https://github.com/P3TERX/docker-aria2-pro</a><br>Docker Hub: <a target="_blank" rel="noopener" href="https://hub.docker.com/r/p3terx/aria2-pro">https://hub.docker.com/r/p3terx/aria2-pro</a><br>支持本项目欢迎随手点个 star，可以让更多的人发现、使用并受益。你的支持是作者持续开发维护的动力。</p>
+<h3 id="docker方式安装"><a href="#docker方式安装" class="headerlink" title="docker方式安装"></a>docker方式安装</h3><p>host模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">    --name aria2-pro \</span><br><span class="line">    --restart unless-stopped \</span><br><span class="line">    --log-opt max-size=1m \</span><br><span class="line">    --network host \</span><br><span class="line">    -e PUID=$UID \</span><br><span class="line">    -e PGID=$GID \</span><br><span class="line">    -e RPC_SECRET=&lt;TOKEN&gt; \</span><br><span class="line">    -e RPC_PORT=6800 \</span><br><span class="line">    -e LISTEN_PORT=6888 \</span><br><span class="line">    -v $PWD/aria2-config:/config \</span><br><span class="line">    -v $PWD/aria2-downloads:/downloads \</span><br><span class="line">    p3terx/aria2-pro</span><br></pre></td></tr></table></figure>
+<p>bridge模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">    --name aria2-pro \</span><br><span class="line">    --restart unless-stopped \</span><br><span class="line">    --log-opt max-size=1m \</span><br><span class="line">    -e PUID=$UID \</span><br><span class="line">    -e PGID=$GID \</span><br><span class="line">    -e RPC_SECRET=&lt;TOKEN&gt; \</span><br><span class="line">    -e RPC_PORT=6800 \</span><br><span class="line">    -p 6800:6800 \</span><br><span class="line">    -e LISTEN_PORT=6888 \</span><br><span class="line">    -p 6888:6888 \</span><br><span class="line">    -p 6888:6888/udp \</span><br><span class="line">    -v ~/aria2-config:/config \</span><br><span class="line">    -v ~/aria2-downloads:/downloads \</span><br><span class="line">    p3terx/aria2-pro</span><br></pre></td></tr></table></figure>
+<h3 id="docker-compose方式安装"><a href="#docker-compose方式安装" class="headerlink" title="docker-compose方式安装"></a>docker-compose方式安装</h3><p>下载<a target="_blank" rel="noopener" href="https://github.com/P3TERX/Aria2-Pro-Docker/blob/master/docker-compose.yml">docker-compose模板</a></p>
+<h3 id="docker方式安装-1"><a href="#docker方式安装-1" class="headerlink" title="docker方式安装"></a>docker方式安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker compose up -d </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d </span><br></pre></td></tr></table></figure>
+<p>依据不同docker-compose版本，命令有所区别</p>
+<h3 id="Unraid安装"><a href="#Unraid安装" class="headerlink" title="Unraid安装"></a>Unraid安装</h3><p>请直接下载相应<a target="_blank" rel="noopener" href="https://github.com/P3TERX/unraid-docker-templates/tree/master/P3TERX">模板</a>使用</p>
+<h3 id="参数含义"><a href="#参数含义" class="headerlink" title="参数含义"></a>参数含义</h3><ul>
+<li>–name aria2-pro - 容器名称，可自定义以示区分。</li>
+<li>–restart unless-stopped - 设置容器重启策略，详情参见 Docker 官方文档。</li>
+<li>–log-driver json-file - 设置日志记录格式为 json 格式。这是 Docker 的默认值，某些特殊情况可能需要设置。</li>
+<li>–log-opt max-size&#x3D;1m - 日志大小限制为1MB，防止 Aria2 持续下载产生大量的日志占用磁盘空间。</li>
+<li>–network host - 使用 host 网络模式。直接使用宿主机网络，免去端口映射导致的部分性能损失，且灵活性更高，可更方便的配置使用 IPv6 网络。host 网络模式仅适用于 Docker 17.06+ ，如果你的 Docker 版本低于此，请先升级。</li>
+<li>-v $PWD&#x2F;aria2-config:&#x2F;config - 配置目录映射，配置文件持久化。左边为宿主机路径供自定义，不要有中文、不要混用配置文件，首次使用请确保目录为空。</li>
+<li>-v $PWD&#x2F;aria2-downloads:&#x2F;downloads - 下载目录映射。左边为宿主机路径供自定义，不要有中文。</li>
+<li>-e PUID&#x3D;$UID - 用户映射。设置文件管理账户的UID(用户 ID)。忽略则默认为nobady用户，并权限最大化。</li>
+<li>-e PGID&#x3D;$GID - 用户组映射。设置文件管理账户的GID(用户组 ID)。忽略则默认为nogroup用户组，并权限最大化。</li>
+<li>-e RPC_SECRET&#x3D;<TOKEN> - RPC 密钥设置，即 WebUI 连接时需要填写的密码，只建议使用字母和数字。如果没有设置，配置文件中的默认密码为P3TERX。</TOKEN></li>
+<li>-e RPC_PORT&#x3D;6800 - RPC 端口设置。</li>
+<li>-e LISTEN_PORT&#x3D;6888 - BT 监听端口（TCP）、DHT 监听端口（UDP）设置，即 Aria2 配置中listen-port与dht-listen-port选项定义的端口。如果没有设置，配置文件中的默认值为6888。</li>
+<li>-e DISK_CACHE&#x3D;<SIZE> - 磁盘缓存设置，默认值64M。建议在有足够的内存空闲情况下设置为适当增加大小，以减少磁盘 I&#x2F;O ，提升读写性能，延长硬盘寿命。比如128M、256M等。此项值仅决定上限，实际对内存的占用取决于网速(带宽)和设备性能等其它因素。当下载文件超过这个大小且网速足够快时最多会占用所设置大小的内存，所以不宜过大，设置不当轻则进程终结、重则宕机。</SIZE></li>
+<li>-e IPV6_MODE&#x3D;true - 开启 IPv6 模式。此变量等同于设定配置文件中的选项disable-ipv6&#x3D;false与enable-dht6&#x3D;true。可间接提升 BT 下载速率，但需要网络完整支持 IPv6 ，否则会导致部分功能异常，甚至无法下载。</li>
+<li>-e SPECIAL_MODE&#x3D;move - 开启文件自动归档&#x2F;分类功能，即在文件下载完成后把文件移动到指定目录。默认移动到下载目录下的completed子目录。</li>
+<li>-e SPECIAL_MODE&#x3D;rclone - 开启 RCLONE 联动功能。首次启动容器会在容器内自动安装 RCLONE，且每次重启会自动更新。</li>
+<li>-e UPDATE_TRACKERS&#x3D;false - 禁用自动更新 BT tracker 。PT 下载和想手动填写设置 BT tracker 需求必须禁用。</li>
+<li>-e CUSTOM_TRACKER_URL&#x3D;<URL>：自定义 BT tracker 列表获取链接，多个链接可以用半角逗号(,)进行分隔。如果没有指定则默认从<a target="_blank" rel="noopener" href="https://trackerslist.com/all_aria2.txt%E8%BF%9B%E8%A1%8C%E8%8E%B7%E5%8F%96%E3%80%82">https://trackerslist.com/all_aria2.txt进行获取。</a></URL></li>
+<li>-e UMASK_SET&#x3D;022 - umask 设置，默认值022。决定你下载下来的文件的权限，对权限不敏感或不理解直接填写000。</li>
+<li>-e TZ&#x3D;<TIME_ZONE> - 时区设置，默认时区为Asia&#x2F;Shanghai，若无特殊需求无需自定义。</TIME_ZONE></li>
+<li>-p 6800:6800 - RPC 通讯端口映射。</li>
+<li>-p 6888:6888 - BT 监听端口（TCP）映射，即 Aria2 配置中listen-port选项定义的端口。</li>
+<li>-p 6888:6888&#x2F;udp - DHT 监听端口（UDP）映射，即 Aria2 配置中dht-listen-port选项定义的端口。</li>
+</ul>
+<h1 id="一些小技巧"><a href="#一些小技巧" class="headerlink" title="一些小技巧"></a>一些小技巧</h1><h1 id="可能出现的问题"><a href="#可能出现的问题" class="headerlink" title="可能出现的问题"></a>可能出现的问题</h1><h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1></article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="/img/pwa/favicon.ico"></a><div class="post-copyright__author_name">最佳损友のHexo</div><div class="post-copyright__author_desc">爱看不看</div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">最佳损友のHexo</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/07/08/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">我的第一篇博客</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div><div class="avatar-img-group"><img class="avatar-img" alt="头像" src="/img/avatar.avif"><div class="avatar-sticker"><img class="avatar-sticker-img" src="https://7.isyangs.cn/34/65f2e4e0423cc-34.png" alt="心情贴纸"></div></div><div class="author-info__description_group"><div class="author-info__description">分享自己对编程的<b>热爱</b>，对美好生活的<b>向往</b>，对知识海洋<b>探索历程</b>。</div><div class="author-info__description2">相信你可以在这里找到对你有用的知识和教程。</div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about/"><div class="author-info__name">最佳损友</div><div class="author-info__desc">爱看不看</div></a><div class="card-info-social-icons is-center"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude st-menu-line"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%EF%BC%88%E6%9C%AA%E5%86%99%E5%AE%8C%EF%BC%89"><span class="toc-text">（未写完）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Aria2%E7%AE%80%E4%BB%8B"><span class="toc-text">Aria2简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Aria2%E6%93%8D%E4%BD%9C%E7%95%8C%E9%9D%A2"><span class="toc-text">Aria2操作界面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Aria2%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="toc-text">Aria2安装步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85docker"><span class="toc-text">1. 安装docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85Aria2-pro"><span class="toc-text">2. 安装Aria2-pro</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80"><span class="toc-text">项目地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85"><span class="toc-text">docker方式安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker-compose%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85"><span class="toc-text">docker-compose方式安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85-1"><span class="toc-text">docker方式安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Unraid%E5%AE%89%E8%A3%85"><span class="toc-text">Unraid安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E5%90%AB%E4%B9%89"><span class="toc-text">参数含义</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7"><span class="toc-text">一些小技巧</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%AF%E8%83%BD%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">可能出现的问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-text">小结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude st-map-line"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/07/09/Aria2-pro%E7%9A%84%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" title="Aria2-pro的安装使用"><img alt="Aria2-pro的安装使用" src="/img/default.avif"></a><div class="content"><a class="title" href="/2024/07/09/Aria2-pro%E7%9A%84%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" title="Aria2-pro的安装使用">Aria2-pro的安装使用</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/08/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" title="我的第一篇博客"><img alt="我的第一篇博客" src="/img/default.avif"></a><div class="content"><a class="title" href="/2024/07/08/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" title="我的第一篇博客">我的第一篇博客</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/08/hello-world/" title="Hello World"><img alt="Hello World" src="/img/default.avif"></a><div class="content"><a class="title" href="/2024/07/08/hello-world/" title="Hello World">Hello World</a></div></div></div></div></div></div></main><footer id="footer"><div id="st-footer-bar"><div class="footer-logo"><span>Solitude</span></div><div class="footer-bar-description">来自 Efu 的文章</div><a class="footer-bar-link" href="/about/">了解更多</a></div><div id="footer_deal"></div><div id="st-footer"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2024 By&nbsp;<a class="footer-bar-link" href="/">最佳损友</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/everfu/hexo-theme-solitude" alt="主题">主题</a><a class="footer-bar-link cc" href="/null" aria-label="copyright"><i class="solitude st-copyright-line"></i><i class="solitude st-creative-commons-by-line"></i><i class="solitude st-creative-commons-nc-line"></i><i class="solitude st-creative-commons-nd-line"></i></a></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/utils.js?v=1.12.3"></script><script src="/js/main.js?v=1.12.3"></script><script src="/js/third_party/waterfall.min.js?v=1.12.3"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script src="/js/third_party/universe.min.js?v=1.12.3"></script><script>dark()
+</script><script src="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js"></script><div class="js-pjax"></div></div><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ['title','#body-wrap','#site-config','meta[name="description"]','.js-pjax','meta[property^="og:"]','#config-diff'],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    typeof rm === 'object' && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- google adsense--><!-- search--><!-- Tianli-Talk--><!-- music--></body></html><script>const posts=["2024/07/09/Aria2-pro的安装使用/","2024/07/08/我的第一篇博客/","2024/07/08/hello-world/"];function toRandomPost(){ pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]); }</script>
